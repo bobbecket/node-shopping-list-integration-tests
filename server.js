@@ -7,8 +7,10 @@ app.use(express.json());
 const shoppingListRouter = require("./shoppingListRouter");
 const recipesRouter = require("./recipesRouter");
 
-// log the http layer
-app.use(morgan("common"));
+if (process.env.NODE_ENV === 'production') {
+  // log the http layer
+  app.use(morgan("common"));
+}
 
 app.use(express.static("public"));
 
